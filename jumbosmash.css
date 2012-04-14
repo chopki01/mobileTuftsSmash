@@ -1,0 +1,170 @@
+html { height: 100%;
+overflow-x: hidden; }
+
+
+h1 {
+text-align: center;
+position: relative;
+}
+
+
+#landing p { 
+
+margin: 30px 20px 40px 20px;
+line-height: 35px;
+font: normal 1.4em helvetica;
+text-indent: 30px;
+text-align: justify;
+color: #545454;
+
+}
+
+#landing:before {
+
+	content: attr(title);
+	border-bottom: 1px solid #313131;
+	width: 570px;
+	display: block;
+	padding: 7px 0px 7px 30px;
+	font: normal 2em Oleo Script;
+	background: rgb(255,255,255);
+background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(252,194,194,1) 65%, rgba(249,117,117,1) 99%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(65%,rgba(252,194,194,1)), color-stop(99%,rgba(249,117,117,1)));
+background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(252,194,194,1) 65%,rgba(249,117,117,1) 99%);
+background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(252,194,194,1) 65%,rgba(249,117,117,1) 99%);
+background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(252,194,194,1) 65%,rgba(249,117,117,1) 99%);
+background: linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(252,194,194,1) 65%,rgba(249,117,117,1) 99%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f97575',GradientType=0 );
+
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	text-shadow: 0 2px 0 #fff;
+}
+
+.smash { 
+font-family: Oleo Script; 
+font-size: 2.3em;
+color: #d22f2f;
+text-shadow: 0px -1px 0px #313131;
+}
+
+.display{
+color: black;
+font-family: Lilita One;
+}
+
+#jumbo { font-family: Lilita One; font-size: 1.6em; opacity: .8;}
+
+.strike{
+position: relative;
+}
+
+.strike:after {
+position: absolute;
+content:"";
+width: 200px;
+height: 0px;
+background: #000;
+display: block;
+top: 50%;
+border: 2px solid #000;
+
+}
+
+.map {
+   position: relative;
+   width: 300px;
+   height: 300px;
+   border:#555555 2px solid;
+}
+
+#email {
+padding: 10px;
+border-radius: 8px;
+box-shadow: inset 0px 0px 8px #838338;
+border: 0px;
+position: relative;
+-webkit-transition: all .8s ease-in-out; 
+}
+
+#email:focus { outline-color: red; border-radius: 8px;}
+
+.mailicon { font-family: pulsarjs; font-size: 2.6em; margin-right: 10px; vertical-align: middle; color: #d22f2f; }
+
+.button { 
+
+color: #fff;
+background: #d22f2f;
+border-radius: 5px;
+padding: 6px; 
+border: 1px solid #fff;
+}
+
+.header {
+text-align: center;
+cursor: pointer;
+padding: 0;
+margin: 20px 0 0 20px;
+}
+
+#friends {
+	text-align: center;
+	height: 0px;	
+	overflow: hidden;
+	-webkit-transition: all .2s ease-in-out;
+	width: 100%;
+	border-collapse: collapse;
+	border-color: #656565;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+
+	}
+	
+#friends td {  -webkit-box-shadow: inset 0px 0px 1px #313131;  }
+	
+#friends td:first-child { 
+width: 30%;
+font: normal 1.4em Lilita One;
+}
+
+.green {background: rgb(255,255,255);
+background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(252,194,194,1) 65%, rgba(249,117,117,1) 99%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(65%,rgba(252,194,194,1)), color-stop(99%,rgba(249,117,117,1)));
+background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(252,194,194,1) 65%,rgba(249,117,117,1) 99%);
+background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(252,194,194,1) 65%,rgba(249,117,117,1) 99%);
+background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(252,194,194,1) 65%,rgba(249,117,117,1) 99%);
+background: linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(252,194,194,1) 65%,rgba(249,117,117,1) 99%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f97575',GradientType=0 );
+ }
+.green td:first-child { position: relative; }
+.green td:first-child::after {
+
+	content: "";
+	position: absolute;
+	background: url(smalljumbo.png) no-repeat;
+	width: 100px;
+	height: 100px;
+	right: -110px;
+	top: 17px;
+
+}
+@font-face {
+  font-family: 'Oleo Script';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Oleo Script'), local('OleoScript-Regular'), url('http://themes.googleusercontent.com/static/fonts/oleoscript/v1/_weQNDK6Uf40CiGFKBBUjrrIa-7acMAeDBVuclsi6Gc.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Lilita One';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lilita One'), local('LilitaOne'), url('http://themes.googleusercontent.com/static/fonts/lilitaone/v1/4FUUC-PxqHfbmE-DcA6LXL3hpw3pgy2gAi-Ip7WPMi0.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'pulsarjs';
+  font-style: normal;
+  font-weight: 400;
+  src: local('pulsarjs'), local('pulsarjs'), url('pulsarjs.ttf') format('ttf');
+}

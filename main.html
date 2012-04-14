@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html> 
+	<head> 
+  
+  <link rel = "stylesheet" media="screen" href="jumbosmash.css" />
+	<title>Log In</title> 
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+  <script type="text/javascript">
+    function checkin()
+    {
+      //Make call to service here that updates where you are.
+      //alert("checking in");      
+      window.location.hash = "#map"
+    };
+    function login()
+    {
+      //make call to proper log in service here
+      //alert("logging in");
+    };
+    function getbig(div) {
+      var rowCount = document.getElementById(div).getElementsByTagName("TR").length;
+      var item = document.getElementById(div);
+      
+      item.style.height = rowCount*60 + "px";
+      item.style.overflow = "visible";
+      item.style.opacity = "1";
+      item.style.visibility = "visible";
+    };
+    function displayData(a){
+     document.getElementById('display').style.visibility = "visible";
+     document.getElementById('nameBlock').innerHTML = a.innerHTML; 
+     
+     //GET STATUS AND LOCATION FROM SERVER
+      
+    };
+    function GetMap()
+    { 
+      //var geolocation = Components.classes["@mozilla.org/geolocation;1"].getService(Components.interfaces.nsIDOMGeoGeolocation); 
+      map = new Microsoft.Maps.Map(document.getElementById("mapDiv"), {enableSearchLogo: false, showDashboard: false, showMapTypeSelector: false, showScalebar: false, center: new Microsoft.Maps.Location(42.406,-71.116),credentials:"AubgdGoMosi08yMPZ6dA77g1P9S0_3Y019-wjx5A7ERj3K2r-V6J8XQ9EckVbvKC", height: 300, width: 300, mapTypeId: Microsoft.Maps.MapTypeId.road});
+      var zoomLevel =15;
+      myLocation = null;
+      var options = map.getOptions();
+      options.zoom =zoomLevel;
+      map.setView(options);
+      
+    };
+    function loadMyPin()
+    {
+      if (myLocation== null)
+      {
+        if(navigator.geolocation){
+          console.log("Geolocation working");
+          navigator.geolocation.getCurrentPosition(function(position){
+            console.log(position.coords.latitude + " " + position.coords.longitude);
+            myLocation = new Microsoft.Maps.Location(position.coords.latitude,position.coords.longitude);
+            myPin = new Microsoft.Maps.Pushpin(myLocation, {draggable: false});
+            myPinInfoBox = new Microsoft.Maps.Infobox(myPin.getLocation(),
+              { title: 'Me',
+                visible: false,
+                offset: new Microsoft.Maps.Point(0,15),
+                height:30,
+                width:60});
+            Microsoft.Maps.Events.addHandler(myPin, 'click', function(){myPinInfoBox.setOptions({visible:true})});
+            Microsoft.Maps.Events.addHandler(myPin, 'viewchange', function(){myPinInfoBox.setOptions({visible: false})});
+            
+            map.entities.push(myPin);
+            map.entities.push(myPinInfoBox);
+            map.setView({center: myLocation});
+            console.log("Pin Pushed");
+            
+          });
+        }
+        else
+        {
+          console.log("Geolocation not working");
+        }
+      }
+    };
+  </script>
+  <script charset="UTF-8" type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0">  
+  </script>
+</head> 
+<body onload="GetMap()"> 
+
+<div data-role="page" id="one">
+
+	<div data-role="header">
+		<h1>Log In</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">		
+  <p>	
+  <h1><span id="jumbo">JUMBO</span><span class="smash">Smash</span><img src="jumboheart.png" /></h1>
+
+    <form name="loginForm" action="#welcome" onsubmit="login(this)" method="get">
+    Email: <br />
+    <input type="text" name ="email"/><br />
+    Password: <br />
+    <input type="password" name="passwd" />
+    </form>
+    <a href="#welcome" data-role="button" onclick="login()"> Log In.</a>
+    </p>		
+    
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Tufts SMASH (2012)</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+<div data-role="page" id="welcome">
+
+	<div data-role="header">
+		<h1>Welcome</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">		
+  <p>	
+  <h1><span id="jumbo">JUMBO</span><span class="smash">Smash</span><img src="jumboheart.png" /></h1>
+
+    <a href="#map" data-role="button" onclick="loadMyPin()">My Fuck Map</a>
+    <a href="#checkin" data-role="button">Check-In</a>
+    <a href="#connections" data-role="button">My Connections</a>
+    
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Tufts SMASH (2012)</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+<div data-role="page" id="map">
+
+	<div data-role="header">
+		<h1><span id="jumbo">My</span><br><span class="smash">Fuck Map</span></h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+		<p>
+      <div id="mapDiv" class="map"></div>
+      <a data-role="button" onclick="loadMyPin()"> Load Fuckables</a>
+      <a href="#welcome" data-role="button" data-mini="true"> Go Back. </a>
+    </p>		
+	</div><!-- /content -->
+	<div data-role="footer">
+		<h4>Tufts SMASH (2012)</h4>
+	</div><!-- /footer -->
+
+</div><!-- /page -->
+
+<div data-role="page" id="checkin">
+	<div data-role="header">
+    <h1>Check In</h1>
+	</div><!-- /header -->
+
+  <div data-role="content">
+		<h1><span id="jumbo">Lets Get You Some</span><br><span class="smash">ASS</span></h1>
+    
+    <form name="checkinForm" action="#map" onsubmit="checkin(this)">
+    Description: <br />
+    <input type="text" name ="desc"/><br />
+    Location: <br />
+    <input type="text" name="Location" />
+    </form>
+    <a href="#connections" type="submit" onclick="checkin()"> So DTF Right Now! </a>
+    <h1><img src="jumboheart.png" /></h1>
+    <a href="#welcome" data-role="button" data-mini="true"> Go Back. </a>
+    
+    
+  </div>
+  
+	<div data-role="footer">
+		<h4>Tufts SMASH (2012)</h4>
+	</div><!-- /footer -->
+</div>
+
+<div data-role="page" id="connections">
+	<div data-role="header">
+    <!--<h1><span id="jumbo">My </span><span class="smash">Connections</span></h1>-->
+    <h1> My Connections</h1>
+	</div><!-- /header -->
+
+  <div data-role="content">
+  <p>
+  <h1><span id="jumbo">Love(jk) Fuck </span><span class="smash">Connections</span><img src="jumboheart.png" /></h1>
+      <ul data-role="listview" data-theme="c" data-inset="true">
+        <li><a onclick="displayData(this)">Julie Balls</a></li>
+        <li><a onclick="displayData(this)">Annie McQuade</a></li>
+        <li><a onclick="displayData(this)">Steve Buscemi</a></li>
+        <li><a onclick="displayData(this)">Dan Rather</a></li>
+      </ul>
+      <p>
+      <div id="display" style="border: 5px ridge #d22f2f; padding:3px; border-radius:10px; visibility:hidden;"> 
+      <a style="color:black;">Name:</a> <a style="color:black;" id="nameBlock"></a><br>
+      <a style="color:black;">Status:</a> <a style="color:black;" id="statusBlock"></a><br>
+      <a style="color:black;">Location:</a> <a style="color:black;" id="locationBlock"></a><br>
+      <a style="color:black;">Time:</a> <a style="color:black;" id="timeBlock"></a><br>
+      </div>
+    </p>
+    <a href="#welcome" data-role="button" data-mini="true"> Go Back. </a>
+  </p>
+  </div>
+  
+	<div data-role="footer">
+		<h4>Tufts SMASH (2012)</h4>
+	</div><!-- /footer -->
+<div>
+</body>
+</html>
